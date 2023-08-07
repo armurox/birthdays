@@ -1,1 +1,1 @@
-This is a web application that allows a person to store the birthdays of the people they care about in a database.
+This is a web application that allows a person to store the birthdays of friends and family they care about in a database.
