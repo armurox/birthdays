@@ -16,7 +16,7 @@ Birthdays is a web application that allows a person to store the birthdays of fr
 1. Clone this repo
 2. Install the required dependencies with "pip install -r requirements.txt"
 3. Run command 'export FLASK_APP=application.py' to set the Flask environment variable
-4. Run command 'flask run' to open on localhost
+4. Run command 'flask run' to open on localhost (optionally, run with flask run --debug to have realtime edits updating to the website)
 5. When the birthday site opens in your browser, register for a new account to create your own stock portfolio, and you're good to go!
 
 ## Features
