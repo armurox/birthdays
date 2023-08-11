@@ -1,5 +1,5 @@
 # Birthdays
-Lab for Week 8 Of CS50
+Lab for Week 9 Of CS50
 
 ## Libraries, Tools and Languages used
 Python
