@@ -1,12 +1,7 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en">
-    <head>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-        <link href="/static/styles.css" rel="stylesheet">
-        <title>Birthdays</title>
-    </head>
-    <body>
+{% block title %} {{session.user_id}} {% endblock %}
+{% block body %}
         <div class="header">
             <h1>Birthdays</h1>
         </div>
@@ -14,7 +9,7 @@
             <div class="section">
 
                 <h2>Add a Birthday</h2>
-                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                <!-- Create a form for users to submit a name, a month, and a day -->
                 <form action = "/" method = "post">
                     <input name = "name" type = "text" autofocus autocomplete = "off" placeholder = "Name">
                     <input name = "month" type = "text" autocomplete = "off" placeholder = "month">
@@ -34,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- TODO: Loop through the database entries to display them in this table -->
+                        <!-- Loop through the database entries to display them in this table -->
                         {% for birthday in birthdays %}
                             <tr>
                                 <td>{{birthday.name}}</td>
@@ -46,5 +41,7 @@
                 </table>
             </div>
         </div>
-    </body>
-</html>
+        <div>
+            <a href = "/logout">Log Out</a>
+        </div>
+{% endblock %}

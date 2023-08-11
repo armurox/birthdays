@@ -46,7 +46,7 @@ def index():
             else:
                 continue
 
-        db.execute("INSERT INTO birthdays(name, month, day) VALUES(?,?,?)", (name, month, day))
+        db.execute("INSERT INTO birthdays(user_id, name, month, day) VALUES(?,?,?,?)", (session["user_id"], name, month, day))
         con.commit()
         return redirect("/")
 
@@ -123,3 +123,13 @@ def register():
 
     else:
         return render_template("register.html")
+    
+@app.route("/logout")
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
