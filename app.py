@@ -90,3 +90,36 @@ def login():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("login.html")
+
+
+# Registration route
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """Register user"""
+    if request.method == "POST":
+        username = request.form.get("username")
+        if not username:
+            return ("Please provide a username", 400)
+        database_username = db.execute("SELECT username FROM users WHERE username = (?)", (username,))
+        database_username = [dict(i) for i in database_username]
+        if (
+            len(database_username)
+            > 0
+        ):
+            return apology("username already exists", 400)
+        password = request.form.get("password")
+        password_check = request.form.get("confirmation")
+        if password != password_check or not password:
+            return apology("passwords do not match / did not enter a password", 400)
+        # Register user
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", (username,generate_password_hash(password)))
+        con.commit()
+        user = db.execute("SELECT id FROM users WHERE username = (?)", (username,))
+        user = [dict(i) for i in user]
+        # Log user in  after registration
+        session["user_id"] = user[0]["id"]
+        flash("Registered!")
+        return redirect("/")
+
+    else:
+        return render_template("register.html")
