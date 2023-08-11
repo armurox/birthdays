@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from helpers import login_required, apology
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 # Configure application
@@ -77,9 +78,7 @@ def login():
 
         rows = [dict(i) for i in rows]
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(
-            rows[0]["hash"], request.form.get("password")
-        ):
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
