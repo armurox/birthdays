@@ -21,7 +21,7 @@ Birthdays is a web application that allows a person to store the birthdays of fr
 
 ## Features
 ### Register
-Allows you to create an account, and stores your username and password
+Allows you to create an account, and stores your username and password.
 
 ### Change Password (Under development)
 Allows you to change your password while logged in, permanently altering it in the database.
